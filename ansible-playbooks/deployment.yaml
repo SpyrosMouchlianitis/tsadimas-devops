@@ -1,0 +1,31 @@
+---
+- hosts: devopsVM
+  remote_user: azureuser
+  tasks:
+    - name: Copy Database Init
+      copy:
+        src: ../mariadb-init
+        dest: ~/
+        owner: azureuser
+        group: azureuser
+        mode: u=rw,g=r,o=r
+    - name: Copy docker-compose 
+      copy:
+        src: ../docker-compose.yaml
+        dest: ~/
+        owner: azureuser
+        group: azureuser
+        mode: u=rw,g=r,o=r
+    - name: Stop previous Docker deployments
+      command: docker compose down
+    - name: Run Database
+      command: docker compose up devops-db -d
+    - name: Copy file with owner and permission, using symbolic representation
+      copy:
+        src: ../devops-backend.jar
+        dest: ~/devops-backend
+        owner: azureuser
+        group: azureuser
+        mode: u=rw,g=r,o=r
+    - name: run jar
+      command: java -jar -Dspring.profiles.active=local ~/devops-backend/devops-backend.jar

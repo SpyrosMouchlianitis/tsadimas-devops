@@ -1,0 +1,20 @@
+---
+- hosts: devopsVM
+  remote_user: azureuser
+  tasks:
+    - name:  Copy Backend Helm Chart
+      copy:
+        src: ../helm/backend
+        dest: ~/helm/
+        owner: azureuser
+        group: azureuser
+        mode: u=rw,g=r,o=r
+    - name:  Deploy Database
+      command: docker compose up -d devops-db
+    - name:  Start minikube
+      command: minikube start
+    - name: Delay for DB to deploy
+      ansible.builtin.pause:
+        seconds: 5
+    - name: Deploy Services on k8s Environment
+      command: helm install devops-backend ~/helm/backend # TODO replace with helmfile
