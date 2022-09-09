@@ -1,6 +1,8 @@
 ---
 - hosts: localhost
   tasks:
+    - name: Change Permissions
+      command: chmod 777 /var/lib/jenkins/workspace/devops
     - name: Copy Database Init
       copy:
         src: ../mariadb-init
