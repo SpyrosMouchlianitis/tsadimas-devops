@@ -3,13 +3,13 @@ kind: Ingress
 metadata:
   name: devops-backend-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /app
+    nginx.ingress.kubernetes.io/rewrite-target: /app/
 spec:
   ingressClassName: nginx
   rules:
   - http:
       paths:
-      - path: /app
+      - path: /app/
         pathType: Prefix
         backend:
           service:
