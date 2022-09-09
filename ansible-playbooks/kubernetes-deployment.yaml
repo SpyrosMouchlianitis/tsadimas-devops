@@ -6,7 +6,7 @@
         src: ../helm
         dest: ~/
     - name:  Change workdir
-      command: cd /home/azureuser
+      command: chdir=/home/azureuser
     - name:  Deploy Database
       command: docker compose up -d devops-db
     - name: Delay for DB to deploy
