@@ -1,19 +1,19 @@
 ---
-- hosts: localhost
-  tasks:
-    - name:  Copy Helm Charts
-      copy:
-        src: ../helm
-        dest: ~/
-    - name:  Change workdir
-      command: chdir=/home/azureuser
-    - name:  Deploy Database
-      command: docker compose up -d devops-db
-    - name: Delay for DB to deploy
-      ansible.builtin.pause:
-        seconds: 5
-    - name: Deploy Services on k8s Environment
-      command: microk8s helm3 install devops-backend ~/helm/backend
+# - hosts: localhost
+#   tasks:
+#     - name:  Copy Helm Charts
+#       copy:
+#         src: ../helm
+#         dest: ~/
+#     - name:  Change workdir
+#       command: chdir=/home/azureuser
+#     - name:  Deploy Database
+#       command: docker compose up -d devops-db
+#     - name: Delay for DB to deploy
+#       ansible.builtin.pause:
+#         seconds: 5
+#     - name: Deploy Services on k8s Environment
+#       command: microk8s helm3 install devops-backend ~/helm/backend
 
 - hosts: devopsVM
   remote_user: azureuser
