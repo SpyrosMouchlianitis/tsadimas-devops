@@ -2,7 +2,7 @@
 - hosts: localhost
   tasks:
     - name:  Login to Docker
-      command: cat ~/docker_pass.txt | docker login --username smouchlianitis --password-stdin
+      command: docker login --username smouchlianitis --password MaNi4cKisBack
     - name: Copy Database Init
       copy:
         src: ../mariadb-init
