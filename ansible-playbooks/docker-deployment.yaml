@@ -1,8 +1,6 @@
 ---
 - hosts: localhost
   tasks:
-    - name:  Login to Docker
-      command: docker login --username smouchlianitis --password MaNi4cKisBack
     - name: Copy Database Init
       copy:
         src: ../mariadb-init
@@ -11,8 +9,8 @@
       copy:
         src: ../docker-compose.yaml
         dest: ~/
-    - name: Pull latest Docker images
-      command: docker compose pull
+    # - name: Pull latest Docker images
+    #   command: docker compose pull
     - name: Stop any existing Docker deployments
       command: docker compose down
     - name: Run Docker deployment   
