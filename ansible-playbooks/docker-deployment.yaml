@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
+  remote_user: azureuser
   tasks:
     # - name: Change Permissions
     #   command: chmod 777 /var/lib/jenkins/workspace/devops
