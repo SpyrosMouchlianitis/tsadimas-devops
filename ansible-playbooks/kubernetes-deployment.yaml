@@ -5,8 +5,10 @@
       copy:
         src: ../helm
         dest: ~/
+    - name:  Change workdir
+      command: cd /home/azureuser
     - name:  Deploy Database
-      command: cd /home/azureuser && docker compose up -d devops-db
+      command: docker compose up -d devops-db
     - name: Delay for DB to deploy
       ansible.builtin.pause:
         seconds: 5
