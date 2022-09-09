@@ -1,8 +1,8 @@
 ---
 - hosts: localhost
   tasks:
-    - name: Change Permissions
-      command: chmod 777 /var/lib/jenkins/workspace/devops
+    # - name: Change Permissions
+    #   command: chmod 777 /var/lib/jenkins/workspace/devops
     - name: Copy Database Init
       copy:
         src: ../mariadb-init
@@ -13,8 +13,8 @@
         dest: ~/
     # - name: Pull latest Docker images
     #   command: docker compose pull
-    - name: Stop any existing Docker deployments
-      command: docker compose down
+    # - name: Stop any existing Docker deployments
+    #   command: docker compose down
     - name: Run Docker deployment   
       command: docker compose up -d
 
