@@ -1,4 +1,27 @@
 ---
+- hosts: localhost
+  tasks:
+    - name: Copy Database Init
+      copy:
+        src: ../mariadb-init
+        dest: ~/
+        owner: azureuser
+        group: azureuser
+        mode: u=rw,g=r,o=r
+    - name: Copy docker-compose 
+      copy:
+        src: ../docker-compose.yaml
+        dest: ~/
+        owner: azureuser
+        group: azureuser
+        mode: u=rw,g=r,o=r
+    - name: Pull latest Docker images
+      command: docker compose pull
+    - name: Stop any existing Docker deployments
+      command: docker compose down
+    - name: Run Docker deployment   
+      command: docker compose up -d
+
 - hosts: devopsVM
   remote_user: azureuser
   tasks:

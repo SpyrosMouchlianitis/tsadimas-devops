@@ -1,0 +1,4 @@
+---
+releases:
+  - name:  devops-backend
+    chart: ./backend
