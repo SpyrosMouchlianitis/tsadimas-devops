@@ -5,9 +5,6 @@
       copy:
         src: ../helm
         dest: ~/
-        owner: azureuser
-        group: azureuser
-        mode: u=rw,g=r,o=r
     - name:  Deploy Database
       command: docker compose up -d devops-db
     - name: Delay for DB to deploy
