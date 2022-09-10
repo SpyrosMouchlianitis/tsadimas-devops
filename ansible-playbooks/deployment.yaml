@@ -20,7 +20,7 @@
       command: docker compose down
     - name: Run Database
       command: docker compose up devops-db -d
-    - name: Copy file with owner and permission, using symbolic representation
+    - name: Copy jar file
       copy:
         src: ../devops-backend.jar
         dest: ~/devops-backend
